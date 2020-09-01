@@ -54,7 +54,7 @@ function populateShows(shows) {
                <h5 class="card-title">${show.name}</h5>
                <p class="card-text">${show.summary}</p>
              </div>
-             <button class="btn btn-primary">Episodes<button>
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#episodeModal">Episodes</button>
            </div>
          </div>
         `
@@ -102,14 +102,12 @@ async function getEpisodes(id) {
 /** Given an array of objects w/ episode data create an li for each episode and append to episode list ul. Set episode section display to show.  */
 
 function populateEpisodes(episodes) {
-	const $episodeList = $('#episodes-list');
+	const $episodeList = $('#episodeList');
 	$episodeList.empty();
 	for (let episode of episodes) {
-		const $li = $(`<li>${episode.name} (season ${episode.season}, number ${episode.number})</li>`);
+		const $li = $(`<li><b>${episode.name}</b> (season ${episode.season}, number ${episode.number})</li>`);
 		$episodeList.append($li);
 	}
-
-	$('#episodes-area').show();
 }
 
 /** Add event listener to card buttons to retrieve show id and append episode list to DOM. */

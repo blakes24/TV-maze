@@ -19,15 +19,15 @@
 async function searchShows(query) {
 	// TODO: Make an ajax request to the searchShows api.  Remove
 	// hard coded data.
-	const results = await axios.get(`http://api.tvmaze.com/search/shows?q=${query}`);
+	const results = await axios.get(`https://api.tvmaze.com/search/shows?q=${query}`);
 	const data = results.data;
 	const showArr = [];
 	for (let item of data) {
 		showArr.push({
-			id: item.show.id,
-			name: item.show.name,
-			summary: item.show.summary,
-			image: item.show.image
+			id      : item.show.id,
+			name    : item.show.name,
+			summary : item.show.summary,
+			image   : item.show.image
 		});
 	}
 	return showArr;
@@ -86,14 +86,14 @@ $('#search-form').on('submit', async function handleSearch(evt) {
  */
 
 async function getEpisodes(id) {
-	const results = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`);
+	const results = await axios.get(`https://api.tvmaze.com/shows/${id}/episodes`);
 	const episodeArr = [];
 	for (let episode of results.data) {
 		episodeArr.push({
-			id: episode.id,
-			name: episode.name,
-			season: episode.season,
-			number: episode.number
+			id     : episode.id,
+			name   : episode.name,
+			season : episode.season,
+			number : episode.number
 		});
 	}
 	return episodeArr;
